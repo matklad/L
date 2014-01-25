@@ -1,0 +1,26 @@
+name:                L
+version:             0.1.0.0
+synopsis:            Interpreter for L language
+
+author:              Aleksey Kladov
+
+category:            Language
+build-type:          Simple
+cabal-version:       >=1.8
+
+executable L
+  hs-source-dirs:      src
+  main-is:             L/Main.hs
+
+  other-modules:       L.Types.Token
+                     , L.Types.AST
+                     , L.Parser.Lexer
+                     , L.Parser.LexerInternals
+                     , L.Parser.Parser
+                                                
+  build-depends:       base ==4.6.*
+                     , array==0.4.*
+
+  Build-tools:         alex
+                     , happy
+                       
