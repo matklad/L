@@ -4,10 +4,11 @@ module L.Parser.Parser (parse) where
 import qualified L.Types.Token as T
 import L.Types.AST
 import L.Parser.ParserInternals
+import L.Parser.Lexer
 
 }
 
-%name parse
+%name parseTokens
 %tokentype { T.Token }
 %error { parseError }
 
@@ -79,5 +80,8 @@ Expression :: { Expression }
 
 parseError :: [T.Token] -> a
 parseError t = error "You shall not parse"
+
+parse :: String -> Program
+parse = parseTokens . tokenize
 
 }
