@@ -3,7 +3,7 @@ module L.Types.AST where
 data Expression = Variable Var | Constant Int
                 | Operation Op Expression Expression
 
-data Var = Var String
+data Var = Var String deriving Eq
 
 data Op = Plus | Minus | Multiply | Divide
         | And | Or | Xor
