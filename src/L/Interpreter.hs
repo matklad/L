@@ -1,7 +1,7 @@
 module L.Interpreter where
 
 import L.Types.AST
-  import Data.Bits
+import Data.Bits
 
 type Env = Var -> Int
 
@@ -24,7 +24,7 @@ evalE exp env = case exp of
       Plus -> l + r
       Minus -> l - r
       Multiply -> l * r
-      Divide -> l / r
+      Divide -> l `div` r
       And -> l .&. r
       Or -> l .|. r
       Xor -> l `xor` r
@@ -35,7 +35,7 @@ evalE exp env = case exp of
 type State = ([Int], [Int], Env)
 
 evalS :: Statement -> State -> State
-evalS statement (i, o, env)@state = case statement of
+evalS statement state@(i, o, env) = case statement of
   Skip -> state
   (Seq s1 s2) ->
     let state'  = evalS s1 state

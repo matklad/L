@@ -2,7 +2,7 @@ module Main where
 import System.Environment
 import System.IO
 import L.Parser.Parser
-import L.Interpreter.Interpreter
+import L.Interpreter
 
 main:: IO()
 main = do

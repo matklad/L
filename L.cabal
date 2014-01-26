@@ -17,7 +17,7 @@ executable L
                      , L.Parser.Lexer
                      , L.Parser.LexerInternals
                      , L.Parser.Parser
-                     , L.Interpreter.Interpreter
+                     , L.Interpreter
                                                 
   build-depends:       base ==4.6.*
                      , array==0.4.*
