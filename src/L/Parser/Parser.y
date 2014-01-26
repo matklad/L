@@ -73,6 +73,7 @@ Expression :: { Expression }
   | Expression '<' Expression   { Operation (makeOp $2) $1 $3}
   | Expression '>' Expression   { Operation (makeOp $2) $1 $3}
   | Expression eq  Expression   { Operation (makeOp $2) $1 $3}
+  | '(' Expression ')'          { $2 }
 
 {
 

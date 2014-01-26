@@ -37,8 +37,32 @@ instance Show Expression where
   show e = case e of
     (Variable v) -> show v
     (Constant i) -> show i
-    (Operation o e1 e2) -> "(" ++ show e1 ++ ")" ++  show o
-                           ++ "(" ++ show e2 ++ ")"
+    (Operation o e1 e2) ->
+      (if expPrior e1 < opPrior o
+       then "(" ++ show e1 ++ ")"
+       else show e1)
+      ++ " " ++ show o ++ " " ++
+      (if expPrior e2 < opPrior o
+       then "(" ++ show e2 ++ ")"
+       else show e2)
+      where
+        opPrior :: Op -> Int
+        opPrior op = case op of
+          Eq -> 0
+          Lt -> 0
+          Gt -> 0
+          And -> 1
+          Or -> 1
+          Xor -> 1
+          Plus -> 2
+          Minus -> 2
+          Multiply -> 3
+          Divide -> 3
+
+        expPrior :: Expression -> Int
+        expPrior ep = case ep of
+          (Operation op _ _) -> opPrior op
+          _ -> 4
 
 instance Show Statement where
   show s = case s of
