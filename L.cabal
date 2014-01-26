@@ -3,6 +3,7 @@ version:             0.1.0.0
 synopsis:            Interpreter for L language
 
 author:              Aleksey Kladov
+                   , Alina Kramar       
 
 category:            Language
 build-type:          Simple
