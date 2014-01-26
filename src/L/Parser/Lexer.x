@@ -23,7 +23,7 @@ tokens :-
   "read"                        { \s -> Read}
   "write"                       { \s -> Write}
 
-  $digit                        { Number }
+  $digit+                       { Number }
   $alpha ($alpha | $digit)*     { Name }
   [\+\-\*\/\&\|\^\<\>]          { readSymToken }
   "=="                          { readSymToken }
